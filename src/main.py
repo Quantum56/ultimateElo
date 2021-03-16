@@ -5,11 +5,10 @@ import numpy as np
 
 def main():
     fd = emptyArr(5)
-    for i in range(len(emptyArr)
+    #for i in range(len(emptyArr)
         
-
 def updateElo(arr):
-    return 
+    return
     
 def emptyArr(na):
     li = []
