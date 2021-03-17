@@ -5,7 +5,7 @@ import scipy.integrate as integrate
 
 SQRTPI_INV = 1/m.sqrt(m.pi)
 
-def normal(x):
+def normalize(x):
     return (0.5 + SQRTPI_INV * float(integrate.quad(lambda t: m.exp(-(t**2)), 0, x)[0]))
 
 def test():
