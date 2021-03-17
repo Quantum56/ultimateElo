@@ -40,7 +40,7 @@ def play_game(Ra, Rb):
         result = -1
     return update_elo(Ra, Rb, result, Ea, Eb)
 
-if (__name__ == "__main__"):
+if __name__ == "__main__":
     t = play_game(1400, 1300)
     print("New Ra: " + str(t[0]))
     print("New Rb: " + str(t[1]))

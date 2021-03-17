@@ -95,5 +95,5 @@ def play_game(Ra, Rb):
     return update_elo(Ra, Rb, result, Ea, Eb)
 
 
-if (__name__ == "__main__"):
+if __name__ == "__main__":
     main()
