@@ -2,27 +2,42 @@ import os
 import math as m
 import array
 import time
+import numpy
 from numpy import random as r
+import scipy.integrate as integrate
 
 master = []
-START_ELOs = [0.6, 0.8, 1.0, 1.2, 1.4]
+#START_ELOs = [0.6, 0.8, 1.0, 1.2, 1.4]
+SQRTPI_INV = 1/m.sqrt(m.pi)
 
-test2 = list(range(0, 12))
-test2[:] = [x / 6 for x in test2]
+order = list(range(0, 13))
+START_ELOs = [x / 6 for x in order]
+test1 = r.normal(loc=0, scale=0.1, size=10)
 
 def main():
     # hello!
-    i = 0
+    #i = 0
+    print(START_ELOs)
     for num in START_ELOs:
-        rand = r.normal(loc=1, scale=0.075)
-        print(rand)
-        START_ELOs[i] = num * rand * 1400 
-        master.append(START_ELOs[i])
-        i += 1
-    print(master)
-    print(test2)
+        #rand = r.normal(loc=1, scale=0.075)
+        #print(rand)
+        master.append(normal(num) * 1400)
+        #master.append(START_ELOs[i])
+        #i += 1
+    print("Starting array: " + str(master))
+    #print(test2)
     test()
+    print(test1)
+    test1[:] = [normal(x) for x in test1]
+    print(test1)
+    test1[:] = [3000*t for t in test1]
+    test1.sort()
+    print(test1)
+    print(numpy.mean(test1))
 
+
+def normal(x):
+    return (0.5 + SQRTPI_INV*float(integrate.quad(lambda t: m.exp(-(t**2)), 0, x)[0]))
 
 def test():
     print("test\n")
@@ -38,8 +53,8 @@ def test():
 
 def update_elo(Ra, Rb, result): # if result = 1: A won, and if result = -1: B won
     temp = []
-    Ea = 1/(1 + 10**((Rb-Ra)/400))
-    Eb = 1/(1 + 10**((Ra-Rb)/400))
+    Ea = 1/(1 + 10**((Rb - Ra)/400))
+    Eb = 1/(1 + 10**((Ra - Rb)/400))
     if (result == 1):
         a_res = 1
         b_res = 0
