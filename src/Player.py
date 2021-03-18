@@ -1,16 +1,16 @@
 class Player:
-    def __init__(self, rank, elo):
-        self.index = rank
-        self.rating = elo
+    def __init__(self, id, elo):
+        self.index = id
+        self._rating = elo
 
-    def get_rating(self):
-        return self.rating
+    @property
+    def rating(self):
+        return self._rating
 
-    def get_rank(self):
+    @rating.setter
+    def rating(self, elo):
+        self._rating = elo
+
+    @property
+    def id(self):
         return self.index
-
-    def set_rating(self, new_elo):
-        self.rating = new_elo
-
-    def set_rank(self, new_rank):
-        self.index = new_rank
