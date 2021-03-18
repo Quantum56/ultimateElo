@@ -12,8 +12,12 @@ def normalize(x):
 
 def test():
     print("test\n")
-    test = play_game(1400, 1300)
-    print(str(test[0]) + " = Ra new \n" + str(test[1]) + " = Rb new\n")
+    test = play_game(1300, 1300)
+    print(str(test[0][0]) + " = Ra new \n" + str(test[0][1]) + " = Rb new\n")
+    if (test[1] == 1):
+        print("A won.\n")
+    else: 
+        print("B won.\n")
 
 
 def prob(Ra, Rb):
@@ -43,8 +47,10 @@ def play_game(Ra, Rb):
         result = 1
     else:
         result = -1
-    return update_elo(Ra, Rb, result, Ea, Eb)
+    return (update_elo(Ra, Rb, result, Ea, Eb), result)
 
+def gen_elos(s):
+    return [3000 * normalize(x) for x in r.normal(loc=0, scale=0.1, size=s)]
 
 if __name__ == "__main__":
     t = play_game(1400, 1300)
