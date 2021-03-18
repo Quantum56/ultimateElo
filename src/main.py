@@ -35,6 +35,10 @@ def main():
     #p1.rating = 1040
     # print(p1.rating)
     # h.test()
+    play_test_game()
+
+
+def play_test_game():
     result = h.play_game(players[0].rating, players[1].rating)
     print(str(result) + "\nPlayer " +
           str(players[0].id) + " played player " + str(players[1].id))
@@ -42,6 +46,11 @@ def main():
         print("and lost")
     else:
         print("and won")
+    print("New player " + str(players[0].id) +
+          "\'s rating: " + str(result[0][0]))
+    print("New player " + str(players[1].id) +
+          "\'s rating: " + str(result[0][1]))
+
 
 if __name__ == '__main__':
     main()
