@@ -60,7 +60,8 @@ def play_tournament(order, player_list):
     new_list = []
     b = True
     if(len(order) == 1):
-        print("The winner is player " + str(player_list[0].id) + " with a rating of " + str(player_list[0].rating) + ".")
+        print("The winner is player " +
+              str(player_list[0].id) + " with a rating of " + str(player_list[0].rating) + ".")
         b = False
         global winner_id
         winner_id = player_list[0].id
@@ -85,9 +86,12 @@ def play_tournament(order, player_list):
             f = open("player.log", "a")
             #f.write("Player " + str(player_list[order[0][j] - 1].id) + " (" + str(old_ratings[0]) + ") " + "played " + str(player_list[order[0][j + 1] - 1].id) + " (" + str(old_ratings[1]) + ") " + s)
             try:
-                f.write("Player " + str(player_list[order[0][j] - 1].id) + " (" + str(round(old_ratings[0])) + ") " + "played player " + str(player_list[order[0][j + 1] - 1].id) + " (" + str(round(old_ratings[1])) + ") " + s + "\n")
-                f.write(str(player_list[order[0][j] - 1].id) + "\'s new rank is " + str(round(new_ratings[0][0])) + "\n")
-                f.write(str(player_list[order[0][j + 1] - 1].id) + "\'s new rank is " + str(round(new_ratings[0][1])) + "\n")
+                f.write("Player " + str(player_list[order[0][j] - 1].id) + " (" + str(round(old_ratings[0])) + ") " + "played player " + str(
+                    player_list[order[0][j + 1] - 1].id) + " (" + str(round(old_ratings[1])) + ") " + s + "\n")
+                f.write(str(player_list[order[0][j] - 1].id) +
+                        "\'s new rank is " + str(round(new_ratings[0][0])) + "\n")
+                f.write(str(player_list[order[0][j + 1] - 1].id) +
+                        "\'s new rank is " + str(round(new_ratings[0][1])) + "\n")
             except IndexError:
                 print("INDEX ERROR: ")
                 print(j)

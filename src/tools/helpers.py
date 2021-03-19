@@ -40,7 +40,7 @@ def update_elo(Ra, Rb, result, Ea, Eb):  # if result = 1: A won, and if result =
     return (Ra_new, Rb_new)
 
 
-def play_game(Ra, Rb): 
+def play_game(Ra, Rb):
     """Returns the updated Ra, Rb as [0][0-1], and result of game as [1]."""
     result = r.rand()
     Ea, Eb = prob(Ra, Rb)[0], prob(Ra, Rb)[1]
