@@ -17,7 +17,7 @@ def main():
     if(os.path.exists("player.log")):
         os.remove("player.log")
     START_ELOS = h.gen_elos(NUM_PlAYERS)
-    START_ELOS.sort()
+    #START_ELOS.sort() # unnecessary ?
     print(START_ELOS)
     tournament_order = create_all(NUM_PlAYERS)
     print(tournament_order)
@@ -37,8 +37,8 @@ def main():
     del f
     # play_test_game()
     play_tournament(tournament_order, players)
-    print(winner_id)
-    print(players[winner_id - 1].rating)
+    #print(winner_id)
+    #print(players[winner_id - 1].rating)
 
 
 def play_test_game():
@@ -60,7 +60,7 @@ def play_tournament(order, player_list):
     new_list = []
     b = True
     if(len(order) == 1):
-        print("The winner is player " +
+        print("\nThe winner is player " +
               str(player_list[0].id) + " with a rating of " + str(player_list[0].rating) + ".")
         b = False
         global winner_id
@@ -79,10 +79,12 @@ def play_tournament(order, player_list):
             else:
                 new_list.append(player_list[order[0][j] - 1])
                 s = " Result: Win."
-            print(old_ratings)
-            print(new_ratings)
-            print(order[0][j])
-            print(order[0][j + 1])
+            print("Player " + str(player_list[order[0][j] - 1].id) + " (" + str(round(old_ratings[0])) + ") " + "played player " + str(
+                    player_list[order[0][j + 1] - 1].id) + " (" + str(round(old_ratings[1])) + ") " + s)
+            print("New ranks: " + str(round(new_ratings[0][0])) + " and " + str(round(new_ratings[0][1])) + "\n")
+            #print(new_ratings)
+            #print(order[0][j])
+            #print(order[0][j + 1])
             f = open("player.log", "a")
             #f.write("Player " + str(player_list[order[0][j] - 1].id) + " (" + str(old_ratings[0]) + ") " + "played " + str(player_list[order[0][j + 1] - 1].id) + " (" + str(old_ratings[1]) + ") " + s)
             try:
@@ -101,8 +103,9 @@ def play_tournament(order, player_list):
             f.close()
             j += 2
             del f
+        print("\nRound Result: \n")
         for k in new_list:
-            print(k.rating)
+            print(str(k.id) + " -> " + str(k.rating))
         order.pop(0)
         play_tournament(order, new_list)
 
