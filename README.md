@@ -1,2 +1,2 @@
 # ultimateElo
-The most accurate tournament algorithm you will ever see.
+The most (or least) accurate tournament algorithm you will ever see.
