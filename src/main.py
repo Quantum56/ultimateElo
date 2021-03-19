@@ -1,12 +1,8 @@
 import os
-#import numpy as np
-#from numpy import random as r
 from tools import helpers as h
 from tools import tournament as t
 import Player as P
 
-#START_ELOS = r.normal(loc=0, scale=0.1, size=10)
-#START_ELOS[:] = [3000*h.normal(x) for x in START_ELOS]
 START_ELOS = []
 NUM_PlAYERS = 16
 
@@ -20,8 +16,6 @@ winner_id = 0
 def main():
     if(os.path.exists("player.log")):
         os.remove("player.log")
-    #START_ELOS[:] = [3000*h.normal(x) for x in START_ELOS]
-    # START_ELOS.sort()
     START_ELOS = h.gen_elos(NUM_PlAYERS)
     START_ELOS.sort()
     print(START_ELOS)
@@ -41,12 +35,6 @@ def main():
         f.write("Player " + str(text) + "\n")
         f.close()
     del f
-    #p1 = P.Player(1, 1200)
-    # print(p1.id)
-    # print(p1.rating)
-    #p1.rating = 1040
-    # print(p1.rating)
-    # h.test()
     # play_test_game()
     play_tournament(tournament_order, players)
     print(winner_id)
