@@ -16,7 +16,7 @@ def test():
     print(str(test[0][0]) + " = Ra new \n" + str(test[0][1]) + " = Rb new\n")
     if (test[1] == 1):
         print("A won.\n")
-    else: 
+    else:
         print("B won.\n")
 
 
@@ -40,7 +40,8 @@ def update_elo(Ra, Rb, result, Ea, Eb):  # if result = 1: A won, and if result =
     return (Ra_new, Rb_new)
 
 
-def play_game(Ra, Rb):
+def play_game(Ra, Rb): 
+    """Returns the updated Ra, Rb as [0][0-1], and result of game as [1]."""
     result = r.rand()
     Ea, Eb = prob(Ra, Rb)[0], prob(Ra, Rb)[1]
     if (result <= Ea):
@@ -49,8 +50,10 @@ def play_game(Ra, Rb):
         result = -1
     return (update_elo(Ra, Rb, result, Ea, Eb), result)
 
+
 def gen_elos(s):
     return [3000 * normalize(x) for x in r.normal(loc=0, scale=0.1, size=s)]
+
 
 if __name__ == "__main__":
     t = play_game(1400, 1300)
