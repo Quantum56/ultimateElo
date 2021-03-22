@@ -66,6 +66,7 @@ def play_tournament(order, player_list):
         global winner_id
         winner_id = player_list[0].id
     if(b):
+        print("\n*** NEW ROUND ***\n")
         j = 0
         while(j < len(order[0]) - 1):
             s = ""
@@ -103,9 +104,11 @@ def play_tournament(order, player_list):
             f.close()
             j += 2
             del f
+        print("\n--------------------")
         print("\nRound Result: \n")
         for k in new_list:
             print(str(k.id) + " -> " + str(k.rating))
+        print("--------------------")
         order.pop(0)
         play_tournament(order, new_list)
 
